@@ -4,7 +4,6 @@ async function loadIncludes() {
     const res = await fetch(node.dataset.include);
     node.innerHTML = await res.text();
   }));
-  // une fois tout le HTML injecté, on charge le script principal
   const s = document.createElement('script');
   s.src = 'js/script.js';
   document.body.appendChild(s);
