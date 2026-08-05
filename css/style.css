@@ -1,0 +1,47 @@
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+:root { --accent: #A95C38; --ink: #2F2A24; --cream: #F7F2EA; --gold: #8D6E45; --olive: #667A5B; }
+body { margin: 0; background: var(--cream); color: var(--ink); font-family: 'Inter', sans-serif; }
+h1, h2, h3 { font-family: 'Cormorant Garamond', serif; margin: 0; }
+
+.lang-switch { position: fixed; top: 22px; right: 24px; z-index: 50; display: flex; gap: 11px; font-size: 12px; letter-spacing: 2px; }
+.lang-switch span { cursor: pointer; color: var(--ink); }
+.lang-switch span.off { opacity: .45; }
+.lang-sep { width: 1px; height: 11px; background: rgba(0,0,0,.2); }
+
+.hero { min-height: 92vh; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr)); }
+.hero-copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(48px, 7vw, 96px); }
+.eyebrow { font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); font-weight: 500; margin: 0 0 20px; }
+.hero h1 { font-size: clamp(50px, 8vw, 104px); line-height: .95; font-weight: 500; }
+.lede { margin: 32px 0 0; max-width: 400px; font-size: 19px; font-weight: 300; font-style: italic; color: #5c5347; }
+.btn { display: inline-flex; gap: 10px; border: none; cursor: pointer; padding: 16px 32px; border-radius: 2px; font-size: 13px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 30px; }
+.btn-dark { background: var(--ink); color: var(--cream); }
+.btn-accent { background: var(--accent); color: var(--cream); }
+.hero-visual, .sac-visual { background: #14110d; min-height: 340px; position: relative; }
+.placeholder-panel { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: rgba(247,242,234,.35); }
+
+.sac { background: #EEE6D8; padding: clamp(80px, 11vh, 150px) 0; }
+.sac-inner { max-width: 1240px; margin: 0 auto; padding: 0 24px; display: grid; gap: 60px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); align-items: center; }
+.sac-visual { aspect-ratio: 1/1; border-radius: 3px; overflow: hidden; }
+.cta-row { margin-top: 20px; }
+
+.histoire { background: #EEE6D8; padding: clamp(80px, 11vh, 150px) 0; overflow: hidden; }
+.histoire-head { max-width: 1240px; margin: 0 auto 50px; padding: 0 24px; }
+.frieze { overflow-x: auto; padding: 0 24px 10px; }
+.frieze-track { display: flex; min-width: max-content; }
+.frieze-item { width: clamp(260px, 32vw, 340px); flex: none; padding-right: 34px; }
+.frieze-year { font-family: 'Cormorant Garamond', serif; font-size: clamp(40px, 6.5vw, 64px); font-weight: 500; }
+.frieze-item h3 { margin: 10px 0; font-size: 24px; }
+.frieze-item p { font-size: 15px; line-height: 1.65; font-weight: 300; color: #4a4238; }
+
+footer { background: var(--ink); color: var(--cream); padding: 90px 24px; text-align: center; }
+.footer-inner { max-width: 560px; margin: 0 auto; }
+.foot-meta { margin-top: 30px; font-size: 12px; opacity: .5; }
+
+.overlay { display: none; position: fixed; inset: 0; z-index: 100; background: rgba(20,17,13,.72); align-items: center; justify-content: center; padding: 24px; }
+.overlay.open { display: flex; }
+.modal { position: relative; background: var(--cream); max-width: 440px; width: 100%; border-radius: 6px; padding: 44px 36px; }
+.modal-close { position: absolute; top: 16px; right: 18px; border: none; background: none; font-size: 26px; cursor: pointer; color: var(--gold); }
+.price-line { display: flex; justify-content: space-between; margin-bottom: 22px; padding-bottom: 18px; border-bottom: 1px solid rgba(141,110,69,.25); }
+.amount { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600; }
+#checkout-error { margin-top: 14px; color: #8B2B1E; font-size: 13px; display: none; }

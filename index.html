@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mémoire du Dahomey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="lang-switch">
+  <span data-lang="fr">FR</span>
+  <span class="lang-sep"></span>
+  <span data-lang="en" class="off">EN</span>
+</div>
+
+<section class="hero">
+  <div class="hero-copy">
+    <p class="eyebrow" data-fr="Objet culturel · Royaume du Dahomey" data-en="Cultural object · Kingdom of Dahomey">Objet culturel · Royaume du Dahomey</p>
+    <h1>Mémoire<br>du Dahomey</h1>
+    <p class="lede" data-fr="Un sac qui transporte bien plus que vos objets. Il transporte une mémoire." data-en="A bag that carries far more than your belongings. It carries a memory.">Un sac qui transporte bien plus que vos objets. Il transporte une mémoire.</p>
+    <a href="#sac" class="btn btn-dark" data-fr="Découvrir son histoire →" data-en="Discover its story →">Découvrir son histoire →</a>
+  </div>
+  <div class="hero-visual">
+    <div class="placeholder-panel">Photo du sac</div>
+  </div>
+</section>
+
+<section class="sac" id="sac">
+  <div class="sac-inner">
+    <div class="sac-visual"><div class="placeholder-panel">Photo du sac</div></div>
+    <div>
+      <p class="eyebrow" data-fr="L'objet" data-en="The object">L'objet</p>
+      <h2 data-fr="Un sac.<br>Et l'histoire qu'il porte." data-en="A bag.<br>And the story it carries.">Un sac.<br>Et l'histoire qu'il porte.</h2>
+      <p data-fr="Pendant des siècles, les femmes Agojié ont protégé le royaume du Dahomey." data-en="For centuries, the Agojié women protected the kingdom of Dahomey.">Pendant des siècles, les femmes Agojié ont protégé le royaume du Dahomey.</p>
+      <div class="cta-row">
+        <button class="btn btn-accent" id="open-reserve" data-fr="Réserver cette édition →" data-en="Reserve this edition →">Réserver cette édition →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="histoire">
+  <div class="histoire-head">
+    <p class="eyebrow" data-fr="L'histoire" data-en="The history">L'histoire</p>
+    <h2>Les Agojié</h2>
+  </div>
+  <div class="frieze">
+    <div class="frieze-track">
+      <div class="frieze-item">
+        <div class="frieze-year" style="color:var(--accent);">1645</div>
+        <h3 data-fr="Les origines" data-en="The origins">Les origines</h3>
+        <p data-fr="Le roi Houegbadja crée un corps de chasseresses d'éléphants, les gbeto." data-en="King Houegbadja creates a corps of elephant huntresses, the gbeto.">Le roi Houegbadja crée un corps de chasseresses d'éléphants, les gbeto.</p>
+      </div>
+      <div class="frieze-item">
+        <div class="frieze-year" style="color:var(--gold);">1708</div>
+        <h3 data-fr="La reine Tassi Hangbé" data-en="Queen Tassi Hangbé">La reine Tassi Hangbé</h3>
+        <p data-fr="Elle fonde le premier régiment de combat officiel — les Agojié." data-en="She founds the first official combat regiment — the Agojié.">Elle fonde le premier régiment de combat officiel — les Agojié.</p>
+      </div>
+      <div class="frieze-item">
+        <div class="frieze-year" style="color:var(--olive);">Ghézo</div>
+        <h3 data-fr="L'âge d'or" data-en="The golden age">L'âge d'or</h3>
+        <p data-fr="Plusieurs milliers de guerrières surnommées Mino." data-en="Several thousand warriors nicknamed Mino.">Plusieurs milliers de guerrières surnommées Mino.</p>
+      </div>
+      <div class="frieze-item">
+        <div class="frieze-year" style="color:#8B2B1E;">1892</div>
+        <h3 data-fr="La résistance" data-en="The resistance">La résistance</h3>
+        <p data-fr="Face à la conquête française, elles résistent farouchement." data-en="Against the French conquest they fight fiercely.">Face à la conquête française, elles résistent farouchement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <h2>Mémoire du Dahomey</h2>
+    <p class="lede" data-fr="Chaque objet peut raconter une histoire. Celui-ci raconte la nôtre." data-en="Every object can tell a story. This one tells ours.">Chaque objet peut raconter une histoire. Celui-ci raconte la nôtre.</p>
+    <div class="foot-meta">© 2026 Mémoire du Dahomey · Schekina Ahounou</div>
+  </div>
+</footer>
+
+<div class="overlay" id="reserve-overlay">
+  <div class="modal">
+    <button class="modal-close" id="close-reserve">×</button>
+    <div id="reserve-form">
+      <h3 data-fr="Réserver cette édition" data-en="Reserve this edition">Réserver cette édition</h3>
+      <div class="price-line">
+        <span>Sac « Hommage aux Agojié »</span>
+        <span class="amount">45 000 FCFA</span>
+      </div>
+      <button class="btn btn-accent" id="checkout-btn" data-fr="Payer avec Stripe (test) →" data-en="Pay with Stripe (test) →">Payer avec Stripe (test) →</button>
+      <div id="checkout-error"></div>
+    </div>
+  </div>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
