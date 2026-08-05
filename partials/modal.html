@@ -1,0 +1,39 @@
+<div class="overlay" id="reserve-overlay">
+  <div class="modal">
+    <button class="modal-close" id="close-reserve" aria-label="Fermer">×</button>
+
+    <!-- ÉCRAN 1 : formulaire -->
+    <div id="reserve-form">
+      <p class="eyebrow">PRÉCOMMANDE</p>
+      <h3>Réserver cette édition</h3>
+      <p class="desc">Édition N° 001 · Vous serez informé(e) en priorité dès la création de la pièce.</p>
+      <div class="field-group">
+        <input type="text" id="r-prenom" placeholder="Prénom">
+        <input type="text" id="r-nom" placeholder="Nom">
+        <input type="email" id="r-email" placeholder="Adresse e-mail">
+      </div>
+      <p id="reserve-error" class="form-error">Merci de renseigner votre nom et un e-mail valide.</p>
+      <button class="btn btn-accent" id="go-to-payment">Confirmer ma précommande</button>
+    </div>
+
+    <!-- ÉCRAN 2 : paiement -->
+    <div id="reserve-payment" style="display:none;">
+      <p class="eyebrow">PAIEMENT</p>
+      <h3>Finaliser la précommande</h3>
+      <p class="desc">Paiement de test sécurisé par Stripe aucune carte réelle n'est débitée.</p>
+      <div class="price-line">
+        <span>Sac « Hommage aux Agojié »</span>
+        <span class="amount">40 962 FCFA</span>
+      </div>
+      <button class="btn btn-accent" id="checkout-btn">Payer avec Stripe (test) →</button>
+      <div id="checkout-error"></div>
+    </div>
+
+    <!-- ÉCRAN 3 : succès -->
+    <div class="success-box" id="reserve-success" style="display:none;">
+      <h3>Précommande confirmée</h3>
+      <p>Ceci est un paiement de test aucune carte réelle n'a été débitée.</p>
+      <button class="btn btn-dark" id="close-success">Fermer</button>
+    </div>
+  </div>
+</div>
