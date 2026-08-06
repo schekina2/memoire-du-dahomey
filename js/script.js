@@ -79,13 +79,26 @@ document.getElementById('go-to-payment').addEventListener('click', () => {
 });
 
 // ---------- Stripe : Payment Link ----------
+// ---------- Stripe : Payment Link ----------
 const PAYMENT_LINK = 'https://buy.stripe.com/test_5kQ8wPfx51BubDGeeZ2B200';
 
 document.getElementById('checkout-btn').addEventListener('click', () => {
-  document.getElementById('confirmation-form').submit(); // envoie l'email en arrière-plan (iframe caché)
-  setTimeout(() => {
-    window.location.href = PAYMENT_LINK; // puis on va sur Stripe
-  }, 400);
+  const frame = document.querySelector('iframe[name="hidden-frame"]');
+  let redirected = false;
+
+  function goToStripe() {
+    if (redirected) return;
+    redirected = true;
+    window.location.href = PAYMENT_LINK;
+  }
+
+  // dès que l'iframe caché a fini de charger la réponse de FormSubmit, on part sur Stripe
+  frame.addEventListener('load', goToStripe, { once: true });
+
+  document.getElementById('confirmation-form').submit();
+
+  // filet de sécurité : si jamais le "load" ne se déclenche pas, on part sur Stripe après 3s
+  setTimeout(goToStripe, 3000);
 });
 
 // ---------- retour après paiement ----------
