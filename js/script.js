@@ -42,7 +42,6 @@ document.getElementById('play-trailer').addEventListener('click', () => {
     box.innerHTML = '<iframe src="https://www.youtube.com/embed/3RDaPV_rJ1Y?autoplay=1&rel=0" title="The Woman King" frameborder="0" allow="autoplay; fullscreen" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>';
   }
 });
-
 // ---------- modale précommande (3 écrans) ----------
 const overlay = document.getElementById('reserve-overlay');
 const reserveForm = document.getElementById('reserve-form');
@@ -59,7 +58,6 @@ function closeModal() {
 }
 document.getElementById('close-reserve').addEventListener('click', closeModal);
 document.getElementById('close-success').addEventListener('click', closeModal);
-
 document.getElementById('go-to-payment').addEventListener('click', () => {
   const prenom = document.getElementById('r-prenom').value.trim();
   const nom = document.getElementById('r-nom').value.trim();
@@ -68,11 +66,16 @@ document.getElementById('go-to-payment').addEventListener('click', () => {
   const errEl = document.getElementById('reserve-error');
   if (!prenom || !nom || !okEmail) { errEl.style.display = 'block'; return; }
   errEl.style.display = 'none';
+
+  // on sauvegarde les infos pour les retrouver après le retour de Stripe
+  localStorage.setItem('reserve_prenom', prenom);
+  localStorage.setItem('reserve_nom', nom);
+  localStorage.setItem('reserve_email', email);
+
   reserveForm.style.display = 'none';
   reservePayment.style.display = 'block';
 });
 
-// ---------- Stripe : paiement test ----------
 // ---------- Stripe : Payment Link ----------
 const PAYMENT_LINK = 'https://buy.stripe.com/test_5kQ8wPfx51BubDGeeZ2B200';
 
@@ -80,9 +83,31 @@ document.getElementById('checkout-btn').addEventListener('click', () => {
   window.location.href = PAYMENT_LINK;
 });
 
-// retour après paiement (si tu configures une redirection dans Stripe plus tard)
+// ---------- retour après paiement : envoi de l'email de confirmation ----------
 const params = new URLSearchParams(window.location.search);
 if (params.get('success') === 'true') {
+  const prenom = localStorage.getItem('reserve_prenom');
+  const nom = localStorage.getItem('reserve_nom');
+  const email = localStorage.getItem('reserve_email');
+
+  if (email) {
+    fetch('https://formsubmit.co/ajax/schekinaahounou93@gmail.com', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        _subject: 'Nouvelle précommande — Mémoire du Dahomey',
+        _autoresponse: 'Bonjour ' + (prenom || '') + ',\n\nVotre précommande du sac « Mémoire du Dahomey » (Édition N° 001) a bien été confirmée.\n\nMerci de porter cette mémoire avec nous.\n— Mémoire du Dahomey',
+        prenom: prenom,
+        nom: nom,
+        email: email,
+        message: 'Précommande confirmée après paiement de test Stripe.'
+      })
+    }).catch(() => {});
+    localStorage.removeItem('reserve_prenom');
+    localStorage.removeItem('reserve_nom');
+    localStorage.removeItem('reserve_email');
+  }
+
   reserveForm.style.display = 'none';
   reservePayment.style.display = 'none';
   reserveSuccess.style.display = 'block';
