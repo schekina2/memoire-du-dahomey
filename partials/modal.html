@@ -20,7 +20,7 @@
     <div id="reserve-payment" style="display:none;">
       <p class="eyebrow">PAIEMENT</p>
       <h3>Finaliser la précommande</h3>
-      <p class="desc">Paiement de test sécurisé par Stripe aucune carte réelle n'est débitée.</p>
+      <p class="desc">Paiement de test sécurisé par Stripe — aucune carte réelle n'est débitée.</p>
       <div class="price-line">
         <span>Sac « Hommage aux Agojié »</span>
         <span class="amount">40 962 FCFA</span>
@@ -32,8 +32,26 @@
     <!-- ÉCRAN 3 : succès -->
     <div class="success-box" id="reserve-success" style="display:none;">
       <h3>Précommande confirmée</h3>
-      <p>Ceci est un paiement de test aucune carte réelle n'a été débitée.</p>
+      <p>Ceci est un paiement de test — aucune carte réelle n'a été débitée.</p>
       <button class="btn btn-dark" id="close-success">Fermer</button>
     </div>
+
+    <!-- iframe caché : cible du formulaire, pour que l'envoi ne quitte pas la page -->
+    <iframe name="hidden-frame" style="display:none;"></iframe>
+
+    <!-- formulaire caché : envoie le vrai email via FormSubmit (pas AJAX, pour que l'autoresponse fonctionne) -->
+    <form id="confirmation-form" action="https://formsubmit.co/schekinaahounou93@gmail.com" method="POST" target="hidden-frame" style="display:none;">
+      <input type="hidden" name="_subject" value="Nouvelle précommande — Mémoire du Dahomey">
+      <input type="hidden" name="_autoresponse" value="Bonjour,
+
+Votre précommande du sac « Mémoire du Dahomey » (Édition N° 001) a bien été confirmée.
+
+Merci de porter cette mémoire avec nous.
+— Mémoire du Dahomey">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="prenom" id="f-prenom">
+      <input type="text" name="nom" id="f-nom">
+      <input type="email" name="email" id="f-email">
+    </form>
   </div>
 </div>
